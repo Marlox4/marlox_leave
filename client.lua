@@ -15,8 +15,8 @@ AddEventHandler("marlox_senden", function(id, coords, identifier, reason)
     CreateThread(function()
         while show do
             Wait(5)
-            local pcoords = GetEntityCoords(PlayerPedId())
-            if GetDistanceBetweenCoords(coords.x, coords.y, coords.z, pcoords.x, pcoords.y, pcoords.z, true) < 15.0 then
+            local dsafasfdf = GetEntityCoords(PlayerPedId())
+            if GetDistanceBetweenCoords(coords.x, coords.y, coords.z, dsafasfdf.x, dsafasfdf.y, dsafasfdf.z, true) < 15.0 then
                 MARLOX.Functions.ShowFloatingHelpNotification(GetPlayerName(GetPlayerFromServerId(id)).. " hat den Server Verlassen \nID: "..id.." ("..identifier..")\nGrund: "..reason, vector3(coords.x, coords.y, coords.z+0.90))
             else
                 Wait(2000)
@@ -26,12 +26,14 @@ AddEventHandler("marlox_senden", function(id, coords, identifier, reason)
 end)
 
 function MARLOX.Functions.SpawnPed(coords,id)
-    EvilPed = ClonePed(PlayerPedId(id), GetEntityHeading(PlayerPedId(id)), false, true)
+    EvilPed = ClonePed(PlayerPedId(id), GetEntityHeading(PlayerPedId(id)), false, false, false)
     Wait(10)
     SetEntityCoordsNoOffset(EvilPed, coords.x,coords.y,coords.z)
     SetEntityInvincible(EvilPed,true)
     FreezeEntityPosition(EvilPed, true)
     SetBlockingOfNonTemporaryEvents(EvilPed,true)
+    Wait(30 * 1000)
+    DeleteEntity(EvilPed)
 end
 
 function MARLOX.Functions.ShowFloatingHelpNotification(msg, coords)
