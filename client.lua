@@ -9,7 +9,6 @@ AddEventHandler("marlox_senden", function(id, coords, identifier, reason)
     CreateThread(function()
         Wait(30 * 1000)
         show = false
-        DeleteEntity(EvilPed)
     end)
 	
     CreateThread(function()
